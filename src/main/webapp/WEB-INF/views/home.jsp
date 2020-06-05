@@ -1,14 +1,99 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+<link rel=" shortcut icon" href="resources//image/favicon.png">
+<link rel="icon" href="resources/image/favicon.png">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<title>To Do List</title>
+<style>
+	header .topBtn {
+	   color: #000000;
+	   border: 2px solid #000000;
+	}
+	header .insertBtn {
+	   color: #DF1763;
+	   border: 2px solid #DF1763;
+	}
+	.btn {
+	   display: inline-block;
+	    border-radius: 30px;
+	    padding: 20px 30px;
+	    font-weight: bold;
+	    text-decoration: none;
+	    color: white;
+	}
+	header nav {
+	   float: right;
+	   padding: 20px 10px;
+	}
+	
+	header nav ul {
+	   list-style-type: none;
+	   margin: 0;
+	   padding: 0;
+	}
+	header nav ul li {
+	   float: left;
+	   margin: 0 10px;
+	}
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%; /* Could be more or less, depending on screen size */                          
+        }
+</style>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+<header>
+      <nav>
+         <ul>
+            <li><button class="btn topBtn" id="topBtn" type="button" style="background-color: white"><</button></li>
+            <li><button class="btn topBtn" id="topBtn" type="button" style="background-color: white">${ serverTime }</button></li>
+            <li><button class="btn topBtn" id="topBtn" type="button" style="background-color: white">></button></li>
+            <li><button class="btn insertBtn" id="insertBtn" type="button" style="background-color: white">일정 등록</button></li>
+         </ul>
+      </nav>
+</header>
 
-<P>  The time on the server is ${serverTime}. </P>
+	 <!-- Modal 내용 -->
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<p style="text-align: center;">일정등록</p>           	
+			<textarea rows="30px" cols="60px"></textarea>
+		</div>
+	</div>
+
+    
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#insertBtn").click(function(){
+            $("#myModal").show();
+        });
+    });
+        //팝업 Close 기능
+        function close_pop(flag) {
+             $('#myModal').hide();
+        };
+        
+    </script>
 </body>
 </html>
