@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="planMapper">
+
+	<resultMap id="planResultSet" type="Plan">
+		<id property="pCode" column="P_CODE"/>
+		<result property="pName" column="A_NAME"/>
+		<result property="pDetail" column="P_DETAIL"/>
+		<result property="pLevel" column="P_LEVEL"/>
+		<result property="pStartDate" column="P_START_DATE"/>
+		<result property="pEndDate" column="P_END_DATE"/>
+		<result property="pStatus" column="P_STATUS"/>
+	</resultMap>
+	
+	<insert id="insertPlan" parameterType="Plan">
+		INSERT INTO PLAN
+		VALUES(1, #{pName}, #{pDetail}, #{pLevel}, #{pStartDate}, #{pEndDate}, 'Y')
+	</insert>
+</mapper>
+
+
+

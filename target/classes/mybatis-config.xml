@@ -3,10 +3,16 @@
 
 <configuration>
 
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
 	<typeAliases>		
-
-
-
+		<typeAlias type="com.ghs.todo.plan.model.vo.Plan" alias="Plan"/>
 	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mappers/plan-mapper.xml"/>
+	</mappers>
 
 </configuration>

@@ -76,8 +76,21 @@
 	 <!-- Modal 내용 -->
 	<div id="myModal" class="modal">
 		<div class="modal-content">
-			<p style="text-align: center;">일정등록</p>           	
-			<textarea rows="30px" cols="60px"></textarea>
+			<p style="text-align: center;">일정등록</p>
+			<form action="pInsert.do" method="POST">           	
+				<span>일정명	</span> <input type="text" id="pName" name="pName"><br>
+				<span>중요도	</span>
+				<select id="pLevel" name="pLevel">
+					<option value="A">매우 중요</option>
+					<option value="B">중요</option>
+					<option value="C">보통</option>
+					<option value="D">중요하지 않음</option>
+				</select><br>
+				<span>상세 내용	</span> <input type="text" id="pDetail" name="pDetail"><br>
+				<span>시작일	</span><input type="date" id="pStartDate" name="pStartDate"><br>
+				<span>종료일	</span><input type="date" id="pEndDate" name="pEndDate"><br><br><br>
+				<button  id="modalBtn"  type="submit">등록</button>
+			</form>
 		</div>
 	</div>
 
@@ -94,6 +107,10 @@
              $('#myModal').hide();
         };
         
+        $("#modalBtn").click(function(){
+        	$('#myModal').hide();
+        });
     </script>
+    
 </body>
 </html>
