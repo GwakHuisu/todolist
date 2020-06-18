@@ -1,5 +1,9 @@
 package com.ghs.todo.plan.controller;
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +20,15 @@ public class PlanController {
 	private PlanService pService;
 
 	@RequestMapping("pInsert.do")
-	public ModelAndView planInsert(ModelAndView mv, Plan plan) {
+	public ModelAndView planInsert(ModelAndView mv, Plan plan) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date sDay = sdf.parse(plan.getpStartDate().toString());
+		Date eDay = sdf.parse(plan.getpEndDate().toString());
+
+		System.out.println("sDay : " + sdf.format(sDay));
+		System.out.println("eDay : " + sdf.format(eDay));
+		
+		
 		
 		int result = pService.insertPlan(plan);
 		if(result < 1) {
