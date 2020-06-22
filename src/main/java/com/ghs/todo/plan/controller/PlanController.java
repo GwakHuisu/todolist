@@ -24,17 +24,26 @@ public class PlanController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date sDay = sdf.parse(plan.getpStartDate().toString());
 		Date eDay = sdf.parse(plan.getpEndDate().toString());
-
+		Date today = new Date();
+		
+		/* 
+		 * 입력된 날짜 확인
 		System.out.println("sDay : " + sdf.format(sDay));
 		System.out.println("eDay : " + sdf.format(eDay));
+		*/
 		
-		
+		if(sDay.compareTo(today) < 0 && eDay.compareTo(today) > 0) {
+			plan.setpStatus('Y');
+		}else {
+			plan.setpStatus('N');
+		}
 		
 		int result = pService.insertPlan(plan);
-		if(result < 1) {
-			throw new PlanException("일정등록에 실패하였습니다.");
+		if(result > 0) {
+			mv.setViewName("home");
+			return mv;
 		}else {
-			return null; 
+			throw new PlanException("일정등록에 실패하였습니다.");
 		}
 	}
 }

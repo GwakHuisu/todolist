@@ -90,6 +90,7 @@
 				<span>시작일	</span><input type="date" id="pStartDate" name="pStartDate"><br>
 				<span>종료일	</span><input type="date" id="pEndDate" name="pEndDate"><br><br><br>
 				<button  id="modalBtn"  type="submit">등록</button>
+				<button  id="modalBtn"  type="button">닫기</button>
 			</form>
 		</div>
 	</div>

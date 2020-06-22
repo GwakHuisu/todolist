@@ -17,7 +17,7 @@
 	
 	<insert id="insertPlan" parameterType="Plan">
 		INSERT INTO PLAN(P_NAME, P_DETAIL, P_LEVEL, P_START_DATE, P_END_DATE, P_STATUS)
-		VALUES(#{pName}, #{pDetail}, #{pLevel}, #{pStartDate}, #{pEndDate}, 'Y')
+		VALUES(#{pName}, #{pDetail}, #{pLevel}, #{pStartDate}, #{pEndDate}, #{pStatus})
 	</insert>
 </mapper>
 
