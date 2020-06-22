@@ -7,7 +7,7 @@
 
 	<resultMap id="planResultSet" type="Plan">
 		<id property="pCode" column="P_CODE"/>
-		<result property="pName" column="A_NAME"/>
+		<result property="pName" column="P_NAME"/>
 		<result property="pDetail" column="P_DETAIL"/>
 		<result property="pLevel" column="P_LEVEL"/>
 		<result property="pStartDate" column="P_START_DATE"/>
@@ -19,6 +19,13 @@
 		INSERT INTO PLAN(P_NAME, P_DETAIL, P_LEVEL, P_START_DATE, P_END_DATE, P_STATUS)
 		VALUES(#{pName}, #{pDetail}, #{pLevel}, #{pStartDate}, #{pEndDate}, #{pStatus})
 	</insert>
+	
+	<select id="selectPlan" parameterType="String" resultMap="planResultSet">
+		SELECT *
+		FROM PLAN
+		WHERE P_START_DATE &lt;= #{pDate}
+		AND P_END_DATE &gt;= #{pDate}
+	</select>
 </mapper>
 
 

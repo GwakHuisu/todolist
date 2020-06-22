@@ -1,5 +1,7 @@
 package com.ghs.todo.plan.model.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,10 @@ public class PlanServiceImpl implements PlanService {
 	@Override
 	public int insertPlan(Plan plan) {
 		return pDao.insertPlan(plan);
+	}
+
+	@Override
+	public ArrayList<Plan> planSelect(String pDate) {
+		return pDao.planSelect(pDate);
 	}
 }
